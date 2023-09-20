@@ -1,0 +1,136 @@
+﻿<Window x:Name="Window" x:Class="tugas3_wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:tugas3_wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid x:Name="___Grid_">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF088395" Offset="1"/>
+                <GradientStop Color="#FF071952" Offset="0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid x:Name="Log_in" Margin="0,0,0,-2" d:IsHidden="True">
+            <Image Source="/programming.jpg" Stretch="Fill" Opacity="0.2">
+                <Image.OpacityMask>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FFBB6161" Offset="1"/>
+                    </LinearGradientBrush>
+                </Image.OpacityMask>
+            </Image>
+
+            <TextBox HorizontalAlignment="Center" Margin="0,68,0,0" TextWrapping="Wrap" Text="PGamings" VerticalAlignment="Top" Width="488" Cursor="AppStarting" TextAlignment="Center" FontFamily="STCaiyun" TextChanged="TextBox_TextChanged" Background="Transparent" BorderBrush="Transparent" FontWeight="Bold" FontSize="72" Foreground="#F2F7A1" />
+            <TextBlock HorizontalAlignment="Left" Margin="335,185,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Visibility="Hidden"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="242" Foreground="#FFF2F7A1" TextAlignment="Center" Background="#35A29F" />
+            <TextBox HorizontalAlignment="Center" Margin="0,152,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="488" Cursor="AppStarting" TextAlignment="Center" FontFamily="Agency FB" TextChanged="TextBox_TextChanged" Background="Transparent" BorderBrush="Transparent" FontWeight="Bold" FontSize="20" Foreground="#F2F7A1" />
+            <TextBox HorizontalAlignment="Center" Margin="0,220,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="488" Cursor="AppStarting" TextAlignment="Center" FontFamily="Agency FB" TextChanged="TextBox_TextChanged" Background="Transparent" BorderBrush="Transparent" FontWeight="Bold" FontSize="20" Foreground="#F2F7A1" />
+            <CheckBox Content="Remember Me" HorizontalAlignment="Left" Margin="279,290,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked"/>
+            <Button Content="Forgot Password?" HorizontalAlignment="Left" Margin="423,288,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="LightBlue" BorderBrush="Transparent"/>
+            <Button x:Name="image" Margin="328,347,423,58" Background="Transparent" BorderBrush="Transparent">
+                <Image Source="C:\Users\revel\source\repos\tugas3_wpf\tugas3_wpf\google-logo-g-suite-google-9820d64d83b313b7a901dcc7f6052ee6.png" RenderTransformOrigin="1.197,0.467" />
+            </Button>
+            <PasswordBox HorizontalAlignment="Center" Margin="0,246,0,0" VerticalAlignment="Top" Width="242" Height="34" Background="#35A29F" BorderBrush="Transparent"/>
+            <Button Content="LOG IN" HorizontalAlignment="Center" Margin="0,313,0,0" VerticalAlignment="Top" Width="242" Height="29" FontWeight="Bold" Background="#35A29F" Foreground="#F2F7A1"/>
+            <TextBox HorizontalAlignment="Left" Margin="360,351,0,0" TextWrapping="Wrap" Text="Login with Google" VerticalAlignment="Top" Width="126" Cursor="AppStarting" TextAlignment="Center" FontFamily="Agency FB" TextChanged="TextBox_TextChanged" Background="Transparent" BorderBrush="Transparent" FontSize="18" Foreground="#F2F7A1" />
+            <TextBlock HorizontalAlignment="Left" Margin="311,391,0,0" TextWrapping="Wrap" Text="Don't have an account?" VerticalAlignment="Top" Height="25" Width="142" FontWeight="Bold"/>
+            <Button x:Name="LogInButton" Content="Signup" HorizontalAlignment="Left" Margin="445,389,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="LightBlue" BorderBrush="Transparent" Click="SignUpButton_Click"/>
+
+
+        </Grid>
+        <Grid x:Name="Sign_up" Margin="0,0,0,-2">
+            <Image Source="/programming.jpg" Stretch="Fill" Opacity="0.2">
+                <Image.OpacityMask>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FFBB6161" Offset="1"/>
+                    </LinearGradientBrush>
+                </Image.OpacityMask>
+            </Image>
+
+            <TextBox HorizontalAlignment="Center" TextWrapping="Wrap" Text="Sign Up" VerticalAlignment="Top" Width="488" Cursor="AppStarting" TextAlignment="Center" FontFamily="Agency FB" TextChanged="TextBox_TextChanged" Background="Transparent" BorderBrush="Transparent" FontWeight="Bold" FontSize="40" Foreground="#F2F7A1" />
+            <TextBlock HorizontalAlignment="Left" Margin="335,185,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Visibility="Hidden"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="318" Foreground="#FFF2F7A1" TextAlignment="Center" Background="#35A29F" />
+            <TextBox HorizontalAlignment="Center" Margin="0,152,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="488" Cursor="AppStarting" TextAlignment="Center" FontFamily="Agency FB" TextChanged="TextBox_TextChanged" Background="Transparent" BorderBrush="Transparent" FontWeight="Bold" FontSize="20" Foreground="#F2F7A1" />
+            <TextBox HorizontalAlignment="Center" Margin="0,220,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="488" Cursor="AppStarting" TextAlignment="Center" FontFamily="Agency FB" TextChanged="TextBox_TextChanged" Background="Transparent" BorderBrush="Transparent" FontWeight="Bold" FontSize="20" Foreground="#F2F7A1" />
+            <CheckBox Content="I accept Pgaming's" HorizontalAlignment="Left" Margin="241,291,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked"/>
+            <Button Content="Terms &amp; Conditions" HorizontalAlignment="Left" Margin="365,289,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="LightBlue" BorderBrush="Transparent"/>
+            <Button x:Name="image1" Margin="328,347,423,58" Background="Transparent" BorderBrush="Transparent">
+                <Image Source="C:\Users\revel\source\repos\tugas3_wpf\tugas3_wpf\google-logo-g-suite-google-9820d64d83b313b7a901dcc7f6052ee6.png" RenderTransformOrigin="1.197,0.467" />
+            </Button>
+            <PasswordBox HorizontalAlignment="Center" Margin="0,246,0,0" VerticalAlignment="Top" Width="318" Height="34" Background="#35A29F" BorderBrush="Transparent"/>
+            <Button Content="SIGN UP" HorizontalAlignment="Center" Margin="0,313,0,0" VerticalAlignment="Top" Width="242" Height="29" FontWeight="Bold" Background="#35A29F" Foreground="#F2F7A1"/>
+            <TextBox HorizontalAlignment="Left" Margin="360,351,0,0" TextWrapping="Wrap" Text="Signup with Google" VerticalAlignment="Top" Width="126" Cursor="AppStarting" TextAlignment="Center" FontFamily="Agency FB" TextChanged="TextBox_TextChanged" Background="Transparent" BorderBrush="Transparent" FontSize="18" Foreground="#F2F7A1" />
+            <TextBlock HorizontalAlignment="Center" Margin="0,389,0,0" TextWrapping="Wrap" Text="Already have an account?" VerticalAlignment="Top" Height="25" Width="214" FontWeight="Bold"/>
+            <Button x:Name="SignUpButton" Content="Signup" HorizontalAlignment="Left" Margin="445,387,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="LightBlue" BorderBrush="Transparent" Click="LogInButton_Click"/>
+            <TextBlock HorizontalAlignment="Left" Margin="241,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="136" Foreground="#FFF2F7A1" TextAlignment="Center" Background="#35A29F" />
+            <TextBlock HorizontalAlignment="Left" Margin="423,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="136" Foreground="#FFF2F7A1" TextAlignment="Center" Background="#35A29F" />
+            <TextBox HorizontalAlignment="Left" Margin="241,82,0,0" TextWrapping="Wrap" Text="First Name" VerticalAlignment="Top" Width="84" Cursor="AppStarting" TextAlignment="Center" FontFamily="Agency FB" TextChanged="TextBox_TextChanged" Background="Transparent" BorderBrush="Transparent" FontWeight="Bold" FontSize="20" Foreground="#F2F7A1" />
+            <TextBox HorizontalAlignment="Left" Margin="419,82,0,0" TextWrapping="Wrap" Text="Last Name" VerticalAlignment="Top" Width="84" Cursor="AppStarting" TextAlignment="Center" FontFamily="Agency FB" TextChanged="TextBox_TextChanged" Background="Transparent" BorderBrush="Transparent" FontWeight="Bold" FontSize="20" Foreground="#F2F7A1" />
+
+
+        </Grid>
+
+
+    </Grid>
+</Window>

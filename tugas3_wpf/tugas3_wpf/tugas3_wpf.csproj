@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="code.gif" />
+    <None Remove="programming.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="code.gif" />
+    <Resource Include="programming.jpg" />
+  </ItemGroup>
+
+</Project>
